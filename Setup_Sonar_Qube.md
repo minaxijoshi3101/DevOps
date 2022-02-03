@@ -32,6 +32,15 @@ Prerequsites:
     tail /opt/sonarqube/logs/sonar.log
     http://13.233.97.45:9000/
     admin admin1
-   
+  
+  On jenkins server, download sonar-scanner - https://docs.sonarqube.org/latest/analysis/scan/sonarscanner/
+  wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.6.2.2472-linux.zip
+  unzip
+  In Jenkins, download sonar plugins (Sonar Quality Gates Plugin,SonarQube Scanner for Jenkins,Quality Gates Plugin) .
+  Go to "Manage Jenkins" --> "global tool configuration" --> SonarQube Scanner --> sonarqube = /path of sonarscanner(/opt/jenkins/sonar-scanner-4.6.2.2472-linux)
+  Go to "Manage Jenkins" --> "configure system" --> Name: sonarqube --> server url: http://13.233.38.32:9000/ for token
+  go to sonar server-->Administrator-->My Account -->Security --> generate token --> name 
+  copy this token and paste in jenkins unser token
+  
     
     
