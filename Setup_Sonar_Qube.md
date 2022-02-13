@@ -18,6 +18,7 @@ Prerequsites:
     set the password for this user: postgres
     ALTER USER sonar WITH ENCRYPTED password 'admin';
     systemctl restart postgresql
+    service postgresql-13.service restart
     check whether running on 5432 port or not
     - netstat -tunlp | grep 5432
 4. Do some OS level modifications in vim /etc/sysctl.conf
