@@ -1,3 +1,4 @@
+https://www.youtube.com/watch?v=D8ym8RP1yvo
 "aws configure" to access ECR:
 
   
