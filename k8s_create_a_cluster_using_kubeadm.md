@@ -36,6 +36,7 @@ https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-ku
     sysctl --system
                                                
  10. Add yum repository for kubernetes packages
+    ```diff                                     
     cat >>/etc/yum.repos.d/kubernetes.repo<<EOF
     [kubernetes]
     name=Kubernetes
@@ -47,6 +48,7 @@ https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-ku
             https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
     EOF
   11. Install Kubernetes
+  ```diff 
     yum install -y kubeadm-1.15.6-0.x86_64 kubelet-1.15.6-0.x86_64 kubectl-1.15.6-0.x86_64
     Enable and Start kubelet service
     systemctl enable kubelet
