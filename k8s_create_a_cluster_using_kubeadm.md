@@ -17,7 +17,7 @@ https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-ku
 7. Disable Firewall
 
     systemctl disable firewalld <br />
-    systemctl stop firewalld
+    systemctl stop firewalld <br />
     sometimes below error may occur: <br />
     ```diff 
     - Unit firewalld.service could not be found.
