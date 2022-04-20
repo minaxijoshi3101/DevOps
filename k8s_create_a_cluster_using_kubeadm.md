@@ -18,10 +18,10 @@ https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-ku
 
     systemctl disable firewalld <br />
     systemctl stop firewalld
-    error may occur:
+    sometimes below error may occur: <br />
     ```diff 
     - Unit firewalld.service could not be found.
-    It means firewall-cmd is not installed
+      It means firewall-cmd is not installed
         **yum install firewalld**
 8. Disable swap
 
