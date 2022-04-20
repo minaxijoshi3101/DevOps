@@ -29,11 +29,11 @@ https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-ku
     swapoff -a
 9. Update sysctl settings for Kubernetes networking
 ```diff 
-    cat >> /etc/sysctl.d/kubernetes.conf <<EOF
-    net.bridge.bridge-nf-call-ip6tables = 1
-    net.bridge.bridge-nf-call-iptables = 1
-    EOF
-    sysctl --system
+cat >> /etc/sysctl.d/kubernetes.conf <<EOF
+net.bridge.bridge-nf-call-ip6tables = 1
+net.bridge.bridge-nf-call-iptables = 1
+EOF
+sysctl --system
 ```                                               
  10. Add yum repository for kubernetes packages
  ```diff                                     
@@ -42,8 +42,7 @@ cat >>/etc/yum.repos.d/kubernetes.repo<<EOF
 name=Kubernetes
 baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
 enabled=1
-gpgcheck=1
-repo_gpgcheck=1
+sslverify = 0
 gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg
 https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
 EOF
@@ -51,8 +50,15 @@ EOF
   ```
   11. Install Kubernetes
   ```diff 
-    yum install -y kubeadm-1.15.6-0.x86_64 kubelet-1.15.6-0.x86_64 kubectl-1.15.6-0.x86_64
-    Enable and Start kubelet service
-    systemctl enable kubelet
-    systemctl start kubelet
-  ```
+yum install -y kubeadm-1.15.6-0.x86_64 kubelet-1.15.6-0.x86_64 kubectl-1.15.6-0.x86_64
+```
+
+```diff
+- failure: repodata/repomd.xml from kubernetes: [Errno 256] No more mirrors to try.
+https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64/repodata/repomd.xml: [Errno -1] repomd.xml signature could not be verified for kubernetes
+```
+
+12. Enable and Start kubelet service
+systemctl enable kubelet
+systemctl start kubelet
+  
