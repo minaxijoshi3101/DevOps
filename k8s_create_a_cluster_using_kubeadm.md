@@ -36,7 +36,7 @@ https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-ku
     sysctl --system
                                                
  10. Add yum repository for kubernetes packages
-    ```diff                                     
+ ```diff                                     
     cat >>/etc/yum.repos.d/kubernetes.repo<<EOF
     [kubernetes]
     name=Kubernetes
