@@ -16,9 +16,9 @@ https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-ku
     sed -i --follow-symlinks 's/^SELINUX=enforcing/SELINUX=disabled/' /etc/sysconfig/selinux
 7. Disable Firewall
 
-    systemctl disable firewalld
+    systemctl disable firewalld <br />
     systemctl stop firewalld
 8. Disable swap
 
-    sed -i '/swap/d' /etc/fstab
+    sed -i '/swap/d' /etc/fstab <br />
     swapoff -a
