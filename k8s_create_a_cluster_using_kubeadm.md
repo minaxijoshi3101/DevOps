@@ -47,11 +47,11 @@ https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-ku
     gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg
             https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
     EOF
-  
+  ```
   11. Install Kubernetes
   ```diff 
     yum install -y kubeadm-1.15.6-0.x86_64 kubelet-1.15.6-0.x86_64 kubectl-1.15.6-0.x86_64
     Enable and Start kubelet service
     systemctl enable kubelet
     systemctl start kubelet
-                                               
+  ```
