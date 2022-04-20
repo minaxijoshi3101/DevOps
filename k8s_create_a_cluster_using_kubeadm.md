@@ -28,13 +28,13 @@ https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-ku
     sed -i '/swap/d' /etc/fstab <br />
     swapoff -a
 9. Update sysctl settings for Kubernetes networking
-
+```diff 
     cat >> /etc/sysctl.d/kubernetes.conf <<EOF
     net.bridge.bridge-nf-call-ip6tables = 1
     net.bridge.bridge-nf-call-iptables = 1
     EOF
     sysctl --system
-                                               
+```                                               
  10. Add yum repository for kubernetes packages
  ```diff                                     
     cat >>/etc/yum.repos.d/kubernetes.repo<<EOF
