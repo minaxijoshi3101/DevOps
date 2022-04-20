@@ -8,3 +8,5 @@ https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-ku
 
 3. Swap disabled. You MUST disable swap in order for the kubelet to work properly. - 
 4. Install kubectl - kubectl inetracts with our cluster to manage.
+5. install docker on bothe machines:
+   https://docs.aws.amazon.com/AmazonECS/latest/developerguide/create-container-image.html
