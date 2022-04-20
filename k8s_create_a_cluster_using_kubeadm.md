@@ -10,3 +10,15 @@ https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-ku
 4. Install kubectl - kubectl inetracts with our cluster to manage.
 5. install docker on bothe machines:
    https://docs.aws.amazon.com/AmazonECS/latest/developerguide/create-container-image.html
+6. Disable SELinux
+
+    setenforce 0
+    sed -i --follow-symlinks 's/^SELINUX=enforcing/SELINUX=disabled/' /etc/sysconfig/selinux
+7. Disable Firewall
+
+    systemctl disable firewalld
+    systemctl stop firewalld
+8. Disable swap
+
+    sed -i '/swap/d' /etc/fstab
+    swapoff -a
