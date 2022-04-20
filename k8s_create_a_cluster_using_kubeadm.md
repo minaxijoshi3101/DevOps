@@ -12,7 +12,7 @@ https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-ku
    https://docs.aws.amazon.com/AmazonECS/latest/developerguide/create-container-image.html
 6. Disable SELinux
 
-    setenforce 0
+    setenforce 0 <br />
     sed -i --follow-symlinks 's/^SELINUX=enforcing/SELINUX=disabled/' /etc/sysconfig/selinux
 7. Disable Firewall
 
