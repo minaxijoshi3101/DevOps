@@ -27,3 +27,28 @@ https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-ku
 
     sed -i '/swap/d' /etc/fstab <br />
     swapoff -a
+9. Update sysctl settings for Kubernetes networking
+
+    cat >> /etc/sysctl.d/kubernetes.conf <<EOF
+    net.bridge.bridge-nf-call-ip6tables = 1
+    net.bridge.bridge-nf-call-iptables = 1
+    EOF
+    sysctl --system
+                                               
+ 10. Add yum repository for kubernetes packages
+    cat >>/etc/yum.repos.d/kubernetes.repo<<EOF
+    [kubernetes]
+    name=Kubernetes
+    baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
+    enabled=1
+    gpgcheck=1
+    repo_gpgcheck=1
+    gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg
+            https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+    EOF
+  11. Install Kubernetes
+    yum install -y kubeadm-1.15.6-0.x86_64 kubelet-1.15.6-0.x86_64 kubectl-1.15.6-0.x86_64
+    Enable and Start kubelet service
+    systemctl enable kubelet
+    systemctl start kubelet
+                                               
