@@ -70,6 +70,45 @@ EOF
 ```
 
 12. Enable and Start kubelet service
+```diff
 systemctl enable kubelet
 systemctl start kubelet
+```
+**On Master Node:**
+1. Initialize Kubernetes Cluster
+
+kubeadm init --apiserver-advertise-address=<MasterServerIP(give privateIP address here)> --pod-network-cidr=192.168.0.0/16
+
+O/P: 
+```diff
++ Your Kubernetes control-plane has initialized successfully!
+
++ To start using your cluster, you need to run the following as a regular user:(so create the user first following step 2
+
+  mkdir -p $HOME/.kube
+  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+```
+2. Create a user for kubernetes administration and copy kube config file.
+To be able to use kubectl command to connect and interact with the cluster, the user needs kube config file.
+In this case, we are creating a user called kubeadmin
+diff```
+useradd kubeadmin 
+mkdir /home/kubeadmin/.kube
+cp /etc/kubernetes/admin.conf /home/kubeadmin/.kube/config
+chown -R kubeadmin:kubeadmin /home/kubeadmin/.kube
+```
+3. Deploy Calico network as a kubeadmin user.
+
+This should be executed as a user (heare as a kubeadmin )
+
+sudo su - kubeadmin 
+kubectl create -f https://docs.projectcalico.org/v3.9/manifests/calico.yaml
+
+4. Cluster join command
+
+kubeadm token create --print-join-command
+**RUN on worker node:**
+kubeadm join 172.31.31.26:6443 --token 5vml77.1g1rh6b4lhbeg80v     --discovery-token-ca-cert-hash sha256:c2eee6235ea3c1a45a7d141b8abf5fe5890eb8c6e76f233dd7952ac897f02c23
+
   
