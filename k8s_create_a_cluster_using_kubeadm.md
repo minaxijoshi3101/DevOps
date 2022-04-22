@@ -109,6 +109,8 @@ kubectl create -f https://docs.projectcalico.org/v3.9/manifests/calico.yaml
 4. Cluster join command
 
 kubeadm token create --print-join-command
+
+
 **RUN on worker node:**
 kubeadm join 172.31.31.26:6443 --token 5vml77.1g1rh6b4lhbeg80v     --discovery-token-ca-cert-hash sha256:c2eee6235ea3c1a45a7d141b8abf5fe5890eb8c6e76f233dd7952ac897f02c23
 
