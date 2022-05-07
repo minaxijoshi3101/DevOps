@@ -77,9 +77,10 @@ systemctl start kubelet
 ```
 **On Master Node:**
 1. Initialize Kubernetes Cluster
-
+```diff
 kubeadm init --apiserver-advertise-address=<MasterServerIP(give privateIP address here)> --pod-network-cidr=192.168.0.0/16
 kubeadm init --apiserver-advertise-address=172.31.24.148 --pod-network-cidr=192.168.0.0/16
+```
 O/P: 
 ```diff
 + Your Kubernetes control-plane has initialized successfully!
@@ -102,10 +103,10 @@ chown -R kubeadmin:kubeadmin /home/kubeadmin/.kube
 3. Deploy Calico network as a kubeadmin user.
 
 This should be executed as a user (heare as a kubeadmin )
-
+```diff
 sudo su - kubeadmin 
 kubectl create -f https://docs.projectcalico.org/v3.9/manifests/calico.yaml
-
+```
 4. Cluster join command
 
 kubeadm token create --print-join-command
