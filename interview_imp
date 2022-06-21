@@ -6,8 +6,9 @@ We have java based applications
 We deploy those applications in multiple envs using Jenkins cicd- 
 
 we use stages such as:
-1. we Checkout from scm , we are using github as an SCM tool.
-2. build the code using build tool that is - maven
+1. stage("checkout scm")we Checkout from scm , we are using github as an SCM tool.
+2. stage ("build")build the code using build tool that is - maven
+3. stage("Static Code Analysis") - we are using sonar for that
 3. Push the artifacts into nexus repo
 4. Take the backup of application (war, tomcats)
 5. Stop the processes (tomcat)
@@ -16,10 +17,17 @@ we use stages such as:
 8. Post release check - testing. We are using selenium for testing
 
 We have java based microservices, we dockerize those applications by creating custom docker images.
+we create image from Dockerfile using docker build command(docker build -t nameofdockerimage:$version .)
+
 Deploy it into different different enviornments. we have QA, Staging, PROD and UAT enviornments.
 
 We push those images to our docker registry. we are using AWS-ECR(Elastic Container Registry) as a docker registry. 
+
 We pull those emages in different envs and execute using docker run command.
+
+aws ecr get-login-password --region ap-southeast-1 --profile  $profile | docker login --username AWS --password-stdin $account_id.dkr.ecr.ap-southeast-1.amazonaws.com
+docker tag $app_name:$version $account_id.dkr.ecr.ap-southeast-1.amazonaws.com/$cluster_name:$version
+docker push $account_id.dkr.ecr.ap-southeast-1.amazonaws.com/$cluster_name:$version
 ===================================================================
 Docker is a containerization tool. we can comapre it with VM. but containers are light weight. resourse utilization is good.
 =========================================================-
@@ -38,8 +46,9 @@ repositories:
 Staging.
 Release repo.
 =========================================================- 
-Dockerfile:
-#FROM instruction - It uses base image
+dockerfile for microservices:
+Dockerfile: 
+#FROM instruction - It uses base image 
 FROM openjdk:11.0.2-jre-slim
 MAINTAINER snehasish
 #COPY erp-%VERSION%.jar .
@@ -52,3 +61,12 @@ RUN mkdir -p /home/localfiles
 CMD /usr/bin/java -Xmx400m -Xms400m -jar erp-0.0.1-SNAPSHOT.jar
 # which port will be used , for example in server.xml connector port is 8085
 EXPOSE 8085
+----------------------------------
+dockerfile for java application(modules)
+FROM tomcat:8.5.69-jdk8-openjdk
+WORKDIR /usr/local/tomcat
+COPY target/fwd-is-customerprofile.war /usr/local/tomcat/webapps
+EXPOSE 8080
+USER root
+CMD chmod +x /usr/local/tomcat/bin/catalina.sh
+CMD ["catalina.sh", "run"]
