@@ -1,0 +1,54 @@
+Hi 
+My name is Sumit
+Currently I am working with Velosis Sys Pvt Ltd:
+Here my roles and responsibilities are:
+We have java based applications
+We deploy those applications in multiple envs using Jenkins cicd- 
+
+we use stages such as:
+1. we Checkout from scm , we are using github as an SCM tool.
+2. build the code using build tool that is - maven
+3. Push the artifacts into nexus repo
+4. Take the backup of application (war, tomcats)
+5. Stop the processes (tomcat)
+6. Deploy the artifacts in application server that is apache tomcat
+7. Start the processes 
+8. Post release check - testing. We are using selenium for testing
+
+We have java based microservices, we dockerize those applications by creating custom docker images.
+Deploy it into different different enviornments. we have QA, Staging, PROD and UAT enviornments.
+
+We push those images to our docker registry. we are using AWS-ECR(Elastic Container Registry) as a docker registry. 
+We pull those emages in different envs and execute using docker run command.
+===================================================================
+Docker is a containerization tool. we can comapre it with VM. but containers are light weight. resourse utilization is good.
+=========================================================-
+GIT - 
+
+master branch is the top most branch - we do prod release
+we have development branch - we do release in Pre prod envs from here.
+we have feature branches - which are created by developers as per their ERP numbers.(ticketing tool)
+Feature branch is being mergeed to development branch 
+finally development branch will be merged to master.
+===============================================================================================
+Nexus:
+artifacts mgmnt tool. we keep our artifacts in nexus.
+which version - 3
+repositories:
+Staging.
+Release repo.
+=========================================================- 
+Dockerfile:
+#FROM instruction - It uses base image
+FROM openjdk:11.0.2-jre-slim
+MAINTAINER snehasish
+#COPY erp-%VERSION%.jar .
+#COPY instruction is to copy the files or directories from source to destination
+COPY target/erp-0.0.1-SNAPSHOT.jar .
+# RUN instruction runs the commads written
+RUN mkdir -p /home/localfiles
+#CMD /usr/bin/java -Xmx400m -Xms400m -jar erp-%VERSION%.jar
+# CMD instruction, runs when container is being created
+CMD /usr/bin/java -Xmx400m -Xms400m -jar erp-0.0.1-SNAPSHOT.jar
+# which port will be used , for example in server.xml connector port is 8085
+EXPOSE 8085
