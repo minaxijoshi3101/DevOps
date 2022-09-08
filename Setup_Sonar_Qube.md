@@ -54,3 +54,16 @@ Prerequsites:
   /usr/bin/postgresql-setup --initdb </br>
   sudo systemctl enable --now postgresql </br>
   sudo systemctl status postgresql </br>
+  adduser postgresql </br>
+  passwd postgresql </br>
+  su - postgres </br>
+  createuser sonar </br>
+  psql </br>
+  ALTER USER sonar WITH ENCRYPTED password 'sonar'; </br>
+  CREATE DATABASE sonarqube OWNER sonar; </br>
+  grant all privileges on DATABASE sonarqube to sonar; </br>
+  \q </br>
+  exit </br>
+  ####install java
+  sudo amazon-linux-extras install java-openjdk11
+  java -version
