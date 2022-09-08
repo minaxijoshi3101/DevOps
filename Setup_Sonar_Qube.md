@@ -42,6 +42,15 @@ Prerequsites:
   Go to "Manage Jenkins" --> "configure system" --> Name: sonarqube --> server url: http://13.233.38.32:9000/ for token
   go to sonar server-->Administrator-->My Account -->Security --> generate token --> name 
   copy this token and paste in jenkins unser token
-  
-    
-    
+  ============================-
+  postgresql:
+  yum list installed | grep postgres </br>
+  yum remove postgresql* -y </br>
+  rm -rf /var/lib/pgsql </br>
+  rpm -qa | grep postgres </br>
+  rpm -qa | grep post* </br>
+  sudo amazon-linux-extras install postgresql10 -y </br>
+  yum install -y postgresql-server.x86_64 postgresql-contrib.x86_64 postgresql-devel.x86_64 -y </br>
+  /usr/bin/postgresql-setup --initdb </br>
+  sudo systemctl enable --now postgresql </br>
+  sudo systemctl status postgresql </br>
