@@ -65,5 +65,8 @@ Prerequsites:
   \q </br>
   exit </br>
   ####install java
-  sudo amazon-linux-extras install java-openjdk11
-  java -version
+  sudo amazon-linux-extras install java-openjdk11 </br>
+  java -version </br>
+  https://www.devopshint.com/how-to-install-sonarqube-on-amazon-linux-2/ </br>
+  https://www.youtube.com/watch?v=BuGaeDoiCcs&list=PLUltco2RCw43iSpp9B-sOtHuBQInkmnYA
+  
