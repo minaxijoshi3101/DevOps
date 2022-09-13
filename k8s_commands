@@ -25,5 +25,11 @@ spec:
           value: minaxi
       image: coolgourav147/nginx-custom
       name: firstcontainer
-      args:
-        ["sleep","50"]
+      args: ["sleep","50"]
+
+========================================= <br />
+kubectl delete pod <podname>
+kubectl apply -f myfirstpod.yaml 
+========================================= <br />
+Create multiple containers in a pod: <br />
+
