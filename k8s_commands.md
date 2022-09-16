@@ -33,6 +33,8 @@ kubectl apply -f myfirstpod.yaml <br />
 ========================================= <br />
 Create multiple containers in a pod: <br />
 
-=========================================< br/>
+=========================================<br/>
+Command to create a service:
+*kubectl expose pod <podname> --port=<portnumber> --target-port=<targetportnumber> --name <service name> *<br />
 delete a service <br />
 kubectl delete service <servicename> <br/>
