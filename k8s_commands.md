@@ -28,8 +28,11 @@ spec:
       args: ["sleep","50"]
 
 ========================================= <br />
-kubectl delete pod <podname>
-kubectl apply -f myfirstpod.yaml 
+kubectl delete pod <podname> <br />
+kubectl apply -f myfirstpod.yaml <br />
 ========================================= <br />
 Create multiple containers in a pod: <br />
 
+=========================================< br/>
+delete a service <br />
+kubectl delete service <servicename> <br/>
