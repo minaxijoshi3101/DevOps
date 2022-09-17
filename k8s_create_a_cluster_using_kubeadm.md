@@ -131,3 +131,41 @@ kubeadm join 172.31.31.26:6443 --token 5vml77.1g1rh6b4lhbeg80v     --discovery-t
 - Joining cluster takes forever
 + check the firewall, make sure all the required ports are open in master machine.
 ```
+```diff
+1  hostnamectl set-hostname master
+    2  sudo yum check-update -y
+    3  curl -sSL https://get.docker.com/ | sh
+    4  curl -fsSL https://get.docker.com/ | sh
+    5  curl -sSL https://get.docker.com/
+    6  curl -sSL https://get.docker.com/ | sh
+    7  yum update -y
+    8  amazon-linux-extras install docker
+    9  service docker start
+   10  systemctl enable docker
+   11  systemctl status docker
+   12  cat <<EOF | sudo tee /etc/yum.repos.d/kubernetes.repo
+[kubernetes]
+name=Kubernetes
+baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-\$basearch
+enabled=1
+gpgcheck=1
+gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+exclude=kubelet kubeadm kubectl
+EOF
+
+   13  sudo setenforce 0
+   14  sudo sed -i 's/^SELINUX=enforcing$/SELINUX=permissive/' /etc/selinux/config
+   15  sudo yum install -y kubelet kubeadm kubectl --disableexcludes=kubernetes
+   16  sudo systemctl enable --now kubelet
+   17  kubeadm init --apiserver-advertise-address=172.31.25.192 --pod-network-cidr=192.168.0.0/16
+   18  mkdir -p $HOME/.kube
+   19  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+   20  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+   21  kubectl get pods -A
+   22  kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"
+   23  kubectl get pods -A
+   24  kubectl get pods --all-namespaces
+   25  kubectl get pods -A
+   26  history
+```
+<img width="1047" alt="image" src="https://user-images.githubusercontent.com/25228357/190846026-9c45daab-99a8-4247-a013-0a7b808a1092.png">
