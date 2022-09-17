@@ -82,7 +82,10 @@ systemctl start kubelet
 **On Master Node:**
 1. Initialize Kubernetes Cluster <br />
 https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/
-```diff
+
+check the Ips of your nodes if range of nodes are 192.168.0.0, dont use below  --pod-network-cidr=192.168.0.0/16
+otherwise you can use <br /
+```diff 
 kubeadm init --apiserver-advertise-address=<MasterServerIP(give privateIP address here)> --pod-network-cidr=192.168.0.0/16
 kubeadm init --apiserver-advertise-address=172.31.24.148 --pod-network-cidr=192.168.0.0/16
 ```
