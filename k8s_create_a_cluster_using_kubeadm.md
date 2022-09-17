@@ -10,9 +10,9 @@ Creating a cluster with kubeadm -
 4. install docker on both the machines:
    https://docs.aws.amazon.com/AmazonECS/latest/developerguide/create-container-image.html
    sudo yum update -y <br />
-   amazon-linux-extras install docker -y < br/>
-   service docker start < br/>
-   systemctl enable docker < /br>
+   amazon-linux-extras install docker -y <br />
+   service docker start <br/>
+   systemctl enable docker <br />
 5. Install kubectl - kubectl inetracts with our cluster to manage.
 
 6. Disable SELinux
