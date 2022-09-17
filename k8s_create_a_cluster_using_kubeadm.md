@@ -99,6 +99,8 @@ O/P:
   sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
   sudo chown $(id -u):$(id -g) $HOME/.kube/config
 ```
+<img width="831" alt="image" src="https://user-images.githubusercontent.com/25228357/190843472-f15ce60a-be80-45f2-9f1b-532060925616.png">
+
 2. Create a user for kubernetes administration and copy kube config file.
 To be able to use kubectl command to connect and interact with the cluster, the user needs kube config file.
 In this case, we are creating a user called kubeadmin
