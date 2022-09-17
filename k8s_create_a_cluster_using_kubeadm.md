@@ -169,3 +169,47 @@ EOF
    26  history
 ```
 <img width="1047" alt="image" src="https://user-images.githubusercontent.com/25228357/190846026-9c45daab-99a8-4247-a013-0a7b808a1092.png">
+diff```
+on worker node:
+1  hostnamectl set-host-name worker
+    2  hostnamectl set-hostname worker
+    3  sudo yum check-update
+    4  yum update -y
+    5  amazon-linux-extras install docker -y
+    6  service docker start
+    7  systemctl enable docker
+    8  docker --version
+    9  cat <<EOF | sudo tee /etc/yum.repos.d/kubernetes.repo
+[kubernetes]
+name=Kubernetes
+baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-\$basearch
+enabled=1
+gpgcheck=1
+gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+exclude=kubelet kubeadm kubectl
+EOF
+
+   10  cat <<EOF | sudo tee /etc/yum.repos.d/kubernetes.repo
+[kubernetes]
+name=Kubernetes
+baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-\$basearch
+enabled=1
+gpgcheck=1
+gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+exclude=kubelet kubeadm kubectl
+EOF
+
+   11  clear
+   12  sudo setenforce 0
+   13  sudo sed -i 's/^SELINUX=enforcing$/SELINUX=permissive/' /etc/selinux/config
+   14  sudo yum install -y kubelet kubeadm kubectl --disableexcludes=kubernetes
+   15  sudo systemctl enable --now kubelet
+   16  history
+   17  watch uptime
+   18  ubeadm join 172.31.25.192:6443 --token hq6c9b.24ovrf5olnb9c4fk --discovery-token-ca-cert-hash sha256:ea764abc350cfebecda0d155043e11193cbbcdb043d01d3ea98163d54753d208
+   19  kubeadm join 172.31.25.192:6443 --token hq6c9b.24ovrf5olnb9c4fk --discovery-token-ca-cert-hash sha256:ea764abc350cfebecda0d155043e11193cbbcdb043d01d3ea98163d54753d208
+```
+<img width="930" alt="image" src="https://user-images.githubusercontent.com/25228357/190846139-1320b53a-3c60-4b41-8f97-936a2f7aa75f.png">
+
+<img width="1037" alt="image" src="https://user-images.githubusercontent.com/25228357/190846124-d0f3aac6-1742-4ab8-9462-2886ba03159c.png">
+
