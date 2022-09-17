@@ -168,9 +168,9 @@ EOF
    25  kubectl get pods -A
    26  history
 
-```diff
-<img width="1047" alt="image" src="https://user-images.githubusercontent.com/25228357/190846026-9c45daab-99a8-4247-a013-0a7b808a1092.png"> 
 ```
+<img width="1047" alt="image" src="https://user-images.githubusercontent.com/25228357/190846026-9c45daab-99a8-4247-a013-0a7b808a1092.png"> 
+
 ```diff
 on worker node:
 1  hostnamectl set-host-name worker
