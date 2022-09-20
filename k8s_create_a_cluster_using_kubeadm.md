@@ -161,6 +161,10 @@ EOF
    18  mkdir -p $HOME/.kube
    19  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
    20  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+   install calico
+   https://projectcalico.docs.tigera.io/getting-started/kubernetes/self-managed-onprem/onpremises
+   ![image](https://user-images.githubusercontent.com/25228357/191173119-c4593fbc-cb07-4b3c-9e85-bf4884ef7f60.png)
+
    21  kubectl get pods -A
    22  kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"
    23  kubectl get pods -A
