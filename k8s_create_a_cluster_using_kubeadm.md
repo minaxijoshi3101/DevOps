@@ -177,6 +177,9 @@ EOF
 
 ![image](https://user-images.githubusercontent.com/25228357/191173119-c4593fbc-cb07-4b3c-9e85-bf4884ef7f60.png) 
 
+<img width="988" alt="image" src="https://user-images.githubusercontent.com/25228357/193571090-1286d3b8-49b6-49d5-9e66-50b15e649f62.png">
+
+
 ```diff
 on worker node:
 1  hostnamectl set-host-name worker
