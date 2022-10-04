@@ -1,3 +1,4 @@
+Ways to create pods in k8s:
 <u>RUN a command in POD's container:</u>
 How to debug a container? </br>
 using kubectl exec command </br>
