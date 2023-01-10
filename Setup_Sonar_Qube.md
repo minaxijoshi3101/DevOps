@@ -1,9 +1,10 @@
 SonarQube for CentOs - 
-youtube link: https://www.youtube.com/watch?v=gH1EQTRbeIw
-https://docs.sonarqube.org/latest/analysis/scan/sonarscanner/
-https://www.devopshint.com/how-to-install-sonarqube-on-amazon-linux-2/      ----->this works
-https://github.com/minaxijoshi3101/DevOps-1/blob/master/sonarqube/Sonarqube_with_database.md.  --> git url
-https://sonarqube.inria.fr/sonarqube/documentation/analysis/scan/sonarscanner-for-maven/        --> sonar-integration
+youtube link: https://www.youtube.com/watch?v=gH1EQTRbeIw               <br/>
+https://docs.sonarqube.org/latest/analysis/scan/sonarscanner/       <br/>
+https://www.devopshint.com/how-to-install-sonarqube-on-amazon-linux-2/      ----->this works <br/>
+https://www.fosstechnix.com/how-to-install-sonarqube-on-centos-8/.    <br/>
+https://github.com/minaxijoshi3101/DevOps-1/blob/master/sonarqube/Sonarqube_with_database.md.  --> git url <br/>
+https://sonarqube.inria.fr/sonarqube/documentation/analysis/scan/sonarscanner-for-maven/        --> sonar-integration <br/>
 
 Prerequsites:
 1. Server should have 2GB RAM minimum
