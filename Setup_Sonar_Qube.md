@@ -8,8 +8,10 @@ https://sonarqube.inria.fr/sonarqube/documentation/analysis/scan/sonarscanner-fo
 Prerequsites:
 1. Server should have 2GB RAM minimum
 2. java 11 should be there
-    yum update -y
-    amazon-linux-extras list | grep openjdk-11
+    yum update -y </br>
+    yum list | grep openjdk <br/>
+    yum install java-11-openjdk-devel.x86_64 -y <br/>
+    amazon-linux-extras list | grep openjdk-11 
     amazon-linux-extras install java-openjdk11
     java -version
 3.  Install postgresql
