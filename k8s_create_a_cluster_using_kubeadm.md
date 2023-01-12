@@ -223,3 +223,72 @@ EOF
 <img width="930" alt="image" src="https://user-images.githubusercontent.com/25228357/190846139-1320b53a-3c60-4b41-8f97-936a2f7aa75f.png">
 
 <img width="1037" alt="image" src="https://user-images.githubusercontent.com/25228357/190846124-d0f3aac6-1742-4ab8-9462-2886ba03159c.png">
+
+=======================================================
+
+<img width="801" alt="image" src="https://user-images.githubusercontent.com/25228357/212157407-c0c97d4e-25b8-4bf9-8915-6d7003bb5c57.png">
+
+cat <<EOF | sudo tee /etc/yum.repos.d/kubernetes.repo
+[kubernetes]
+name=Kubernetes
+baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-\$basearch
+enabled=1
+gpgcheck=1
+gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+exclude=kubelet kubeadm kubectl
+EOF
+
+   91  sudo setenforce 0
+   92  sudo sed -i 's/^SELINUX=enforcing$/SELINUX=permissive/' /etc/selinux/config
+   93  sudo yum install -y kubelet kubeadm kubectl --disableexcludes=kubernetes
+   94  sudo systemctl enable --now kubelet
+   95  kubeadm init --apiserver-advertise-address=172.31.25.192 --pod-network-cidr=192.168.0.0/16
+   96  free -h
+   97  swapoff -a
+   98  free -h
+   99  vim /etc/fstab 
+  100  history
+  101  cat /etc/os-release 
+  102  cat /sys/class/dmi/id/product_uuid 
+  103  yum update -y
+  104  kubeadm init --pod-network-cidr= 10.244.0.0/16
+  105  kubeadm init --pod-network-cidr=10.244.0.0/16
+  106  systemctl status firewalld
+  107  systemctl stop firewalld
+  108  systemctl status firewalld
+  109  systemctl enable firewalld
+  110  systemctl status firewalld
+  111  kubeadm init --pod-network-cidr=10.244.0.0/16
+  112  docker version
+  113  sudo rm /etc/containerd/config.toml
+  114  sudo systemctl restart containerd
+  115  kubeadm init --pod-network-cidr=10.244.0.0/16
+  116   mkdir -p $HOME/.kube
+  117    sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  118    sudo chown $(id -u):$(id -g) $HOME/.kube/config
+  119   kubectl get nodes
+  120  kubectl get pods -A
+  121  kubectl apply -f https://github.com/coreos/flannel/raw/master/Documentation/kube-flannel.yml
+  122  kubectl get pods -A
+  123  kubectl get pods
+  124  kubectl get nodes
+  125  history
+  126  107  systemctl stop firewalld
+  127    108  systemctl status firewalld
+  128    109  systemctl enable firewalld
+  129    110  systemctl status firewalld
+  130    111  kubeadm init --pod-network-cidr=10.244.0.0/16
+  131    112  docker version
+  132    113  sudo rm /etc/containerd/config.toml
+  133    114  sudo systemctl restart containerd
+  134    115  kubeadm init --pod-network-cidr=10.244.0.0/16
+  135    116   mkdir -p $HOME/.kube
+  136    117    sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  137    118    sudo chown $(id -u):$(id -g) $HOME/.kube/config
+  138    119   kubectl get nodes
+  139    120  kubectl get pods -A
+  140    121  kubectl apply -f https://github.com/coreos/flannel/raw/master/Documentation/kube-flannel.yml
+  141    122  kubectl get pods -A
+  142    123  kubectl get pods
+  143  history
+
