@@ -1,2 +1,2 @@
-kubectl get pods -->  connect: connection refused </br>
+kubectl get pods -->  connect: connection refused <br>
 make sure docker is running
