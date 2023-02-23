@@ -1,2 +1,13 @@
 kubectl get pods -->  connect: connection refused <br>
 make sure docker is running
+
+2: If node is in NOT READY state:
+Solution:
+1. Generate token using <kubeadm token generate>
+c2mt74.8jzzea9gcbh6m6bd
+2. kubeadm token create <generated-token> --print-join-command --ttl=0
+   kubeadm token create c2mt74.8jzzea9gcbh6m6bd --print-join-command --ttl=0
+3. run the below in slave node:
+kubeadm join 192.168.68.119:6443 --token c2mt74.8jzzea9gcbh6m6bd 
+--discovery-token-ca-cert-hash sha256:8e89a031146695a3485fe7b50f31fae9663263dfe090d181b87d88b0c990b0c0 
+
